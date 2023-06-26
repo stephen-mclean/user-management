@@ -26,20 +26,25 @@ export default async function UsersList() {
   return (
     <main className="p-24">
       <table>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Company</th>
-          <th>Postal Code</th>
-        </tr>
-        {users.map((user) => (
-          <tr key={user.id}>
-            <td>{user.fullName}</td>
-            <td>{user.email}</td>
-            <td>{user.companyName}</td>
-            <td>{user.postalCode}</td>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Postal Code</th>
           </tr>
-        ))}
+        </thead>
+
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.fullName}</td>
+              <td>{user.email}</td>
+              <td>{user.companyName}</td>
+              <td>{user.postalCode}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </main>
   );
