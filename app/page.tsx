@@ -1,4 +1,4 @@
-import { User, isUserNetworkType } from "@/models/user";
+import { User, isUserAPIType } from "@/models/user";
 
 async function getUsers(): Promise<User[]> {
   const res = await fetch("https://dummyjson.com/users");
@@ -13,8 +13,8 @@ async function getUsers(): Promise<User[]> {
     }
 
     return value.users.map((user: any) => {
-      if (isUserNetworkType(user)) {
-        return new User(user.id, user.firstName, user.lastName);
+      if (isUserAPIType(user)) {
+        return new User(user);
       }
     });
   });
@@ -25,9 +25,22 @@ export default async function UsersList() {
 
   return (
     <main className="p-24">
-      {users.map((user) => (
-        <div key={user.id}>{user.fullName}</div>
-      ))}
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Company</th>
+          <th>Postal Code</th>
+        </tr>
+        {users.map((user) => (
+          <tr key={user.id}>
+            <td>{user.fullName}</td>
+            <td>{user.email}</td>
+            <td>{user.companyName}</td>
+            <td>{user.postalCode}</td>
+          </tr>
+        ))}
+      </table>
     </main>
   );
 }
