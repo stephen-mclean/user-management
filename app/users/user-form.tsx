@@ -9,11 +9,9 @@ type Props = {
 
 export default function UserForm({ user }: Props) {
   const { push } = useRouter();
+  const isEditing = !!user;
 
-  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const form = event.currentTarget;
+  const getUserAPIData = (form: EventTarget & HTMLFormElement) => {
     const formElements = form.elements as typeof form.elements & {
       firstName: HTMLInputElement;
       lastName: HTMLInputElement;
@@ -22,7 +20,7 @@ export default function UserForm({ user }: Props) {
       postalCode: HTMLInputElement;
     };
 
-    const userFormData: UserAPIType = {
+    const userAPIData: UserAPIType = {
       firstName: formElements.firstName.value,
       lastName: formElements.lastName.value,
       email: formElements.email.value,
@@ -34,9 +32,20 @@ export default function UserForm({ user }: Props) {
       },
     };
 
-    fetch("/api/users", {
-      method: "POST",
-      body: JSON.stringify(userFormData),
+    return userAPIData;
+  };
+
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const data = getUserAPIData(form);
+
+    const apiURL = isEditing ? `/api/users?id=${user.id}` : "/api/users";
+
+    fetch(apiURL, {
+      method: isEditing ? "PUT" : "POST",
+      body: JSON.stringify(data),
     })
       .then((value) => value.json())
       .then((result) => {
