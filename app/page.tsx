@@ -39,9 +39,9 @@ export default async function UsersList() {
           <thead>
             <tr className="bg-slate-50 rounded sticky top-16">
               <th className="p-1">Name</th>
-              <th className="p-1">Email</th>
-              <th className="p-1">Company</th>
-              <th className="p-1">Postal Code</th>
+              <th className="p-1 max-sm:hidden">Email</th>
+              <th className="p-1 max-sm:hidden">Company</th>
+              <th className="p-1 max-sm:hidden">Postal Code</th>
               <th className="p-1">Actions</th>
             </tr>
           </thead>
@@ -50,10 +50,12 @@ export default async function UsersList() {
             {users.map((user) => (
               <tr key={user.id} className="even:bg-slate-50 odd:bg-white">
                 <td className="p-1">{user.fullName}</td>
-                <td className="p-1">{user.email}</td>
-                <td className="p-1">{user.companyName}</td>
-                <td className="p-1">{user.postalCode}</td>
-                <td>
+                <td className="p-1 max-sm:hidden">{user.email}</td>
+                <td className="p-1 max-sm:hidden">{user.companyName}</td>
+                <td className="p-1 max-sm:hidden text-center">
+                  {user.postalCode}
+                </td>
+                <td className="p-1 text-center">
                   <Link href={`/users/${user.id}/edit`}>Edit</Link>
                 </td>
               </tr>
