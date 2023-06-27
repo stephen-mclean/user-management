@@ -20,7 +20,7 @@ export default function RootLayout({
         <nav className="bg-slate-600 text-white flex items-center h-16 px-2 sticky top-0">
           <Link href="/">Just About: User Management</Link>
         </nav>
-        <main className="p-24">{children}</main>
+        <main className="p-4">{children}</main>
       </body>
     </html>
   );

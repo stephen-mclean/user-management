@@ -26,32 +26,39 @@ export default async function UsersList() {
 
   return (
     <>
-      <Link href={"/users/create"}>Add User</Link>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Company</th>
-            <th>Postal Code</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.fullName}</td>
-              <td>{user.email}</td>
-              <td>{user.companyName}</td>
-              <td>{user.postalCode}</td>
-              <td>
-                <Link href={`/users/${user.id}/edit`}>Edit</Link>
-              </td>
+      <Link
+        href={"/users/create"}
+        className="bg-slate-600 text-white rounded p-1"
+      >
+        Add User
+      </Link>
+      <div className="flex justify-center">
+        <table>
+          <thead>
+            <tr className="bg-slate-50 rounded sticky top-16">
+              <th className="p-1">Name</th>
+              <th className="p-1">Email</th>
+              <th className="p-1">Company</th>
+              <th className="p-1">Postal Code</th>
+              <th className="p-1">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id} className="even:bg-slate-50 odd:bg-white">
+                <td className="p-1">{user.fullName}</td>
+                <td className="p-1">{user.email}</td>
+                <td className="p-1">{user.companyName}</td>
+                <td className="p-1">{user.postalCode}</td>
+                <td>
+                  <Link href={`/users/${user.id}/edit`}>Edit</Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
