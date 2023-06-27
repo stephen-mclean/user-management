@@ -26,13 +26,15 @@ export default async function UsersList() {
 
   return (
     <>
-      <Link
-        href={"/users/create"}
-        className="bg-slate-600 text-white rounded p-1"
-      >
-        Add User
-      </Link>
-      <div className="flex justify-center">
+      <div className="flex flex-col gap-2">
+        <div>
+          <Link
+            href={"/users/create"}
+            className="bg-slate-600 text-white rounded p-1"
+          >
+            Add User
+          </Link>
+        </div>
         <table>
           <thead>
             <tr className="bg-slate-50 rounded sticky top-16">
