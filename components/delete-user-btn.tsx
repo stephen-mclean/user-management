@@ -1,5 +1,6 @@
 "use client";
 
+import { User, isUserAPIType } from "@/models/user";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -7,16 +8,22 @@ type Props = {
 };
 
 export default function DeleteUserButton({ userId }: Props) {
-  const { refresh } = useRouter();
+  const { push } = useRouter();
 
   const deleteUser = () => {
     fetch(`/api/users?id=${userId}`, {
       method: "DELETE",
     })
       .then((value) => value.json())
+      .then((json) => {
+        if (!isUserAPIType(json)) {
+          throw new Error("Failed to parse user from response");
+        }
+
+        return new User(json);
+      })
       .then((result) => {
-        console.log("=== result ===", result);
-        refresh();
+        push(`/?deleted=${result.fullName}`);
       });
   };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { User, UserAPIType } from "@/models/user";
+import { User, UserAPIType, isUserAPIType } from "@/models/user";
 import { useRouter } from "next/navigation";
 import Input from "./input";
 
@@ -49,9 +49,16 @@ export default function UserForm({ user }: Props) {
       body: JSON.stringify(data),
     })
       .then((value) => value.json())
+      .then((json) => {
+        if (!isUserAPIType(json)) {
+          throw new Error("Failed to parse user from response");
+        }
+
+        return new User(json);
+      })
       .then((result) => {
-        console.log("=== result ===", result);
-        push("/");
+        const action = isEditing ? "edited" : "added";
+        push(`/?${action}=${result.fullName}`);
       });
   };
 
