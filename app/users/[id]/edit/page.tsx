@@ -25,9 +25,9 @@ export default async function EditUser({
   const user = await getUser(id);
 
   return (
-    <main className="p-24">
+    <>
       <h1>Edit User {user.fullName}</h1>
       <UserForm user={user} />
-    </main>
+    </>
   );
 }

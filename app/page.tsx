@@ -25,7 +25,7 @@ export default async function UsersList() {
   const users = await getUsers();
 
   return (
-    <main className="p-24">
+    <>
       <Link href={"/users/create"}>Add User</Link>
       <table>
         <thead>
@@ -52,6 +52,6 @@ export default async function UsersList() {
           ))}
         </tbody>
       </table>
-    </main>
+    </>
   );
 }
