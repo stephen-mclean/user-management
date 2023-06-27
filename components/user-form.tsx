@@ -2,6 +2,7 @@
 
 import { User, UserAPIType } from "@/models/user";
 import { useRouter } from "next/navigation";
+import Input from "./input";
 
 type Props = {
   user?: User;
@@ -55,38 +56,48 @@ export default function UserForm({ user }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
-      <input
-        id="firstName"
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+      <Input
         name="firstName"
+        label="First Name"
         type="text"
         defaultValue={user?.firstName}
+        required
       />
-      <label htmlFor="lastName">Last Name</label>
-      <input
-        id="lastName"
+      <Input
         name="lastName"
+        label="Last Name"
         type="text"
         defaultValue={user?.lastName}
+        required
       />
-      <label htmlFor="email">Email</label>
-      <input id="email" name="email" type="email" defaultValue={user?.email} />
-      <label htmlFor="companyName">Company Name</label>
-      <input
-        id="companyName"
+      <Input
+        name="email"
+        label="Email"
+        type="email"
+        defaultValue={user?.email}
+        required
+      />
+      <Input
         name="companyName"
+        label="Company Name"
         type="text"
         defaultValue={user?.companyName}
+        required
       />
-      <label htmlFor="postalCode">Postal Code</label>
-      <input
-        id="postalCode"
+      <Input
         name="postalCode"
+        label="Postal Code"
         type="text"
         defaultValue={user?.postalCode}
+        required
       />
-      <button type="submit">Submit</button>
+      <button
+        className="bg-slate-600 text-white rounded p-1 mt-4"
+        type="submit"
+      >
+        Submit
+      </button>
     </form>
   );
 }

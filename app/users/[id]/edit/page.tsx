@@ -26,7 +26,7 @@ export default async function EditUser({
 
   return (
     <>
-      <h1>Edit User {user.fullName}</h1>
+      <h1 className="font-semibold text-lg mb-2">Edit User: {user.fullName}</h1>
       <UserForm user={user} />
     </>
   );
