@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import Alert from "./alert";
 
 export default function StatusMessages() {
   const searchParams = useSearchParams();
@@ -22,5 +23,7 @@ export default function StatusMessages() {
     }
   };
 
-  return <div>{getStatusMessage()}</div>;
+  const statusMessage = getStatusMessage();
+
+  return statusMessage && <Alert message={statusMessage} type="success" />;
 }
