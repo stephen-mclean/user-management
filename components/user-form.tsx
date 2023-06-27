@@ -91,6 +91,8 @@ export default function UserForm({ user }: Props) {
         type="text"
         defaultValue={user?.postalCode}
         required
+        pattern="[0-9]{5}"
+        hint="Please enter a 5 digit number e.g 20010"
       />
       <button
         className="bg-slate-600 text-white rounded p-1 mt-4"
