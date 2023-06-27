@@ -1,5 +1,5 @@
 import { User, isUserAPIType } from "@/models/user";
-import UserForm from "../../user-form";
+import UserForm from "@/components/user-form";
 
 async function getUser(id: number): Promise<User> {
   const res = await fetch(`https://dummyjson.com/users/${id}`);
