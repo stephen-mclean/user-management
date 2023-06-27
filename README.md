@@ -4,9 +4,8 @@ Access a live version of this project [here](https://user-management-sage.vercel
 
 ## Installation and running locally
 
-To run this project locally, execute the following commands:
-`yarn`
-`yarn dev`
+To run this project locally, execute the following command:
+`yarn && yarn dev`
 
 ## Overview
 
