@@ -12,6 +12,12 @@ To run this project locally, execute the following command:
 I've gone with the simplest approach possible for this project. The user list is a plain HTML table. The user form is a very plain HTML form with a function for handling submission / hitting the API.
 This approach demonstrates the approach I would take with a real project: don't make it complicated until we need to. There are so many things that I could have done better (listed below) or leveraged third party libraries for, but I think starting with the basic lets you choose all the places to invest in a better or external solution later, rather than building everything at the start and being stuck with it.
 
+### Libraries Used
+
+I've used just one library in addition to NextJS, Typescript, and Tailwind.
+
+- [Classnames](https://www.npmjs.com/package/classnames) for handling class name logic and concatenation.
+
 ### Pages
 
 There are three pages in this project:
