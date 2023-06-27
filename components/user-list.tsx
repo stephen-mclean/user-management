@@ -26,7 +26,7 @@ export default function UserList({ users }: Props) {
             <td className="p-1 max-sm:hidden">{user.email}</td>
             <td className="p-1 max-sm:hidden">{user.companyName}</td>
             <td className="p-1 max-sm:hidden text-center">{user.postalCode}</td>
-            <td className="p-1 text-center flex gap-1">
+            <td className="p-1 justify-center flex gap-1">
               <Link href={`/users/${user.id}/edit`}>Edit</Link>
               {user.id && <DeleteUserButton userId={user.id} />}
             </td>
