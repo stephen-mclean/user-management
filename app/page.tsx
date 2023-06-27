@@ -1,4 +1,5 @@
 import { User, isUserAPIType } from "@/models/user";
+import Link from "next/link";
 
 async function getUsers(): Promise<User[]> {
   const res = await fetch("https://dummyjson.com/users");
@@ -25,6 +26,7 @@ export default async function UsersList() {
 
   return (
     <main className="p-24">
+      <Link href={"/users/create"}>Add User</Link>
       <table>
         <thead>
           <tr>
@@ -32,6 +34,7 @@ export default async function UsersList() {
             <th>Email</th>
             <th>Company</th>
             <th>Postal Code</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -42,6 +45,9 @@ export default async function UsersList() {
               <td>{user.email}</td>
               <td>{user.companyName}</td>
               <td>{user.postalCode}</td>
+              <td>
+                <Link href={`/users/${user.id}/edit`}>Edit</Link>
+              </td>
             </tr>
           ))}
         </tbody>
