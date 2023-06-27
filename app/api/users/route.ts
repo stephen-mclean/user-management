@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  console.log(" ===== create ======");
   const body = await request.json();
 
   const res = await fetch("https://dummyjson.com/users/add", {
@@ -32,6 +31,23 @@ export async function PUT(request: Request) {
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
+  }
+
+  const responseBody = await res.json();
+
+  return NextResponse.json(responseBody);
+}
+
+export async function DELETE(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+
+  const res = await fetch(`https://dummyjson.com/users/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to delete user");
   }
 
   const responseBody = await res.json();
