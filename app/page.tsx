@@ -1,3 +1,4 @@
+import StatusMessages from "@/components/status-messages";
 import UserList from "@/components/user-list";
 import { User, isUserAPIType } from "@/models/user";
 import Link from "next/link";
@@ -28,6 +29,7 @@ export default async function UsersList() {
   return (
     <>
       <div className="flex flex-col gap-2">
+        <StatusMessages />
         <div>
           <Link
             href={"/users/create"}
